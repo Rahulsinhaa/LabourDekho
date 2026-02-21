@@ -31,9 +31,3 @@ jobs:
       - name: Build & Test  # ← SEPARATE STEPS
         run: ./gradlew build
 
-      - name: Publish to GitHub Packages  # ← ONLY ON MAIN/RELEASE
-        if: github.ref == 'refs/heads/main' || github.event_name == 'release'
-        run: ./gradlew publish
-        env:
-          USERNAME: ${{ github.actor }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
